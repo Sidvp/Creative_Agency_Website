@@ -1,0 +1,400 @@
+@import url('https://fonts.googleapis.com/css?family=Poppins:200,300,400,500,600,700,800,900&display=swap'); /*Poppins Font*/
+
+:root {                         /* can be used anywhere */
+  --primary-color: #f60f20;
+  --secondary-color: #1b206e;   /* steelblue*/
+}
+
+/* BASE STYLES */
+* {                          /* Astrics (*) -- >> Universal Selector*/
+  box-sizing: border-box;
+  margin: 0;    /*margin removed*/
+  padding: 0;   /*padding removed*/
+}
+
+html, body {
+  font-family: 'Poppins', sans-serif;
+  color: #111;   /*font-size: 16px (by default)*/
+}
+
+h1 {
+  font-size: 30px;
+  font-weight: 500;
+}
+
+p {
+  margin: 20px 0 10px;   /* Top  Left_&_Right Bottom*/
+  font-size: 1.1rem;     /* 1rem = 16px  (Default Size) */
+                         /* If Font size: 10px for body then 1rem = 10px.  */
+}
+
+section {
+  display: flex;     /*display as a flexbox*/ /*All children will be arranged in row (horizontally).*/
+  flex-direction: column;     /* for section page -> arrange column wise -> one below the other*/
+  height: 100vh;  /*vh - viewport heights*/
+  align-items: center;
+  padding: 100px;
+  margin-top: 60px;
+}
+
+section.home {
+  flex-direction: row;        /* for home page -> arrange row-wise. */
+  margin-top: 0;
+}
+
+/* BUTTON */
+.btn {
+  cursor: pointer;
+  display: inline-block;
+  background: var(--primary-color);   /* #f60f20 */
+  color: #fff;
+  text-decoration: none;
+  padding: 10px 30px;
+  margin: 20px 0;   /* margin did not work as it is an anchor tag (link). By default links are defined inline. */
+  border: 0;
+}
+
+.btn:hover {
+  transform: scale(0.98);
+}
+
+.logo {
+  position: absolute;    /*take it out of regular flow*/
+  top: 30px;
+  left: 100px;
+  font-size: 2rem;
+  font-weight: 700;
+  z-index: 20;    /*to be on top; higher the number of z-index; closer to screen */
+}
+
+/* TOGGLE */
+.toggle {
+  position: fixed;   /*stay fixed at same location, even if the site is scrolled down.*/
+  top: 0;
+  right: 0;
+  width: 60px;
+  height: 60px;
+  background: var(--primary-color) url(../images/menu.png);    /* #f60f20 */
+  background-size: 30px;
+  background-position: center;
+  background-repeat: no-repeat;
+  z-index: 20;
+  cursor: pointer;
+}
+
+.toggle.active {
+  background: var(--primary-color) url(../images/close.png);
+  background-size: 25px;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+/* NAVIGATION */
+
+/*
+.navigation{           // to hide navigation
+  display: none;
+}
+ */
+
+.navigation {
+  position: fixed;
+  top: 0;
+  left: 100%;
+  width: 100%;
+  height: 100%;
+  background-color: #fff;
+  z-index: 15;    /*It should be on top of everything.*/
+  display: flex;
+  justify-content: center;   /*so that everything is set to be horizontally in center.*/
+  align-items: center;       /*so that everything is set to be vertically in center.*/
+}
+
+.navigation.active {
+  left: 0;
+}
+
+.navigation ul {
+  position: relative;
+}
+
+.navigation ul li {
+  position: relative;
+  list-style: none;  /* to remove the bullets. */
+  text-align: center;
+}
+
+.navigation ul li a {       /* links */
+  font-size: 2.2rem;    /*( = 16*2.2 )*/
+  color: #111;
+  text-decoration: none;   /* to get rid of underline.*/
+  font-weight: 300;   /*lighter*/
+}
+
+.navigation ul li a:hover {    /* when links are hovered over */
+  color: var(--primary-color);
+}
+
+.navigation .social-bar {     /*placement of social icons*/
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 60px;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.navigation .social-bar a {
+  display: inline-block;
+  transform: scale(0.5);   /* icons scaled down by half. */
+}
+
+.navigation .email-icon {   /*email icon*/
+  position: absolute;
+  bottom: 20px;
+  transform: scale(0.5);   /* icon scaled down by half. */
+}
+
+/* HOMEPAGE */
+.home-content {
+  position: relative;
+  z-index: 10;      /*So that text does not go behind the text*/
+  max-width: 600px;   /*so that text doesn't appear above the image.*/
+}
+
+.home-img {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  height: 110%; /*changes with the height of the browser.*/
+}
+
+/* SERVICES PAGE */
+.services {
+  margin-top: 40px;
+  display: grid;   /*each services class will be a grid item.*/
+  grid-template-columns: repeat(3, 1fr);      /* (50%, 50%) or (70% 30%)*/  /* fr -> fractions*/   /*1fr 1fr 1fr*/
+  gap: 40px;                                  /* repeat(3, 1fr) -> repeat 1fr three times. */
+  text-align: center;
+}
+
+.services .service {
+  padding: 30px;
+  /* background: #f4f4f4; */
+}
+
+.services .service:hover {              /*on hovering over an service. */
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);   /* 0.1 -> for transperancy. */
+}
+
+.services .service h2 {
+  font-size: 24px;
+  font-weight: 500;
+  margin-top: 20px;
+  color: var(--secondary-color);  /* #1b206e */
+}
+
+.services .service .icon img {
+  max-width: 100px;
+}
+
+/* WORK PAGE */
+.portfolio {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin-top: 20px;
+}
+
+.portfolio .item {
+  position: relative; /*absolute positioning will be used for launch button for hover over effect.*/
+  width: 300px;
+  height: 300px;
+  margin: 5px;
+}
+
+.portfolio .item img {   /*image should occupy 100% of the container. */
+  width: 100%;
+  height: 100%;
+}
+
+.portfolio .item .action {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;  /*stretch the button across the item.*/
+  height: 100%;
+  background: rgba(0, 0, 0, 0.8);  /*(alpha = 0.8 for transperancy.)*/
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  opacity: 0;  /*to make button invisible*/
+  /* opacity: 1;   on hover - to make button visible. */
+  transition: 0.5s;  /* to have fade-in transition. */
+}
+
+.portfolio .item:hover .action {
+  opacity: 1;   /* on hover - to make button visible. */
+}
+
+.portfolio .item .action a {
+  display: inline-block;
+  color: #fff;
+  text-decoration: none;   /* to remove the underline.*/
+  border: 1px solid #fff;
+  padding: 5px 15px;
+}
+
+/* CONTACT */
+.contact {
+  position: relative;
+  width: 100%;
+  margin-top: 50px;
+  display: flex;
+  justify-content: space-between;    /* To have space between two flex items - form and the info*/  /* Justify two items by putting space in between the two items. */
+  align-items: flex-start;        /* align to the top. */
+}
+
+.contact-form {
+  position: relative;
+  background: #f9f9f9;
+  width: calc(100% - 400px);
+  padding: 60px 40px 20px;
+}
+
+.contact-form form {
+  width: 100%;
+}
+
+.contact-form .row {
+  width: 100%;
+  display: flex;
+}
+
+.contact-form .input50 {
+  width: 50%;
+  margin: 0 10px;
+}
+
+.contact-form .input100 {
+  width: 100%;
+  margin: 0 10px;
+}
+
+.contact-form .row input,
+.contact-form .row textarea {
+  position: relative;
+  border: 1px solid rgba(0, 0, 0, 0.2);
+  color: #111;
+  background: transparent;
+  width: 100%;
+  padding: 10px;
+  outline: none;
+  font-size: 16px;
+  font-weight: 300;
+  margin: 10px 0;
+  resize: none;
+}
+
+.contact-form .row textarea {
+  height: 150px;
+}
+
+.contact-form .row input[type='submit'] {    /* target submit type only. */
+  background-color: var(--secondary-color);   /* #1b206e*/
+  color: #fff;
+  margin: 0;
+  text-transform: uppercase;  /* Word 'SEND' should be in UPPERCASE. */
+  letter-spacing: 2px;        /* Space between the letters of the word 'SEND' should be in UPPERCASE. */
+  font-weight: 300;
+  border: 0;
+  cursor: pointer;  /* to have a fingure pointer when hovered over the button.*/
+}
+
+.contact-info {
+  width: 350px;
+  background: #f9f9f9;
+  padding: 60px 40px 20px;
+}
+
+.contact-info .info-box {
+  display: flex;
+  align-items: flex-start;
+  margin-bottom: 40px;
+}
+
+.contact-info .info-box .contact-icon {
+  width: 20px;
+  margin-right: 40px;
+}
+
+.contact-info .info-box .details h4 {
+  color: var(--secondary-color);  /* #1b206e */
+}
+
+.contact-info .info-box .details p,
+.contact-info .info-box .details a {
+  color: #111;
+}
+
+@media (max-width: 1068px) {
+  .home-img {
+    display: none;         /* image is not displayed if width is less than 1068 px. */
+  }
+
+  .logo {
+    top: 10px;    /*position: absolute*/  /* move up*/
+    left: 40px;
+    font-size: 1.5rem;  /* font size is decreased from 2.2rem*/
+  }
+
+  section {
+    padding: 100px 40px;    top|bottom   left|right
+  }
+
+  .navigation ul li a {
+    font-size: 2rem;
+  }
+
+  .services {
+    grid-template-columns: repeat(2, 1fr);   /* For 2 columns -> repeat 1fr twice.*/
+  }
+
+  .contact {
+    flex-direction: column;  /* to have form and contact info one below the other.*/
+  }
+
+  .contact-form {
+    width: 100%;
+    padding: 30px 30px 20px;
+  }
+
+  .contact-form .row {
+    flex-direction: column;   /* so that last_name and subject are stacked on the next row.*/
+  }
+
+  .contact-info {
+    width: 100%;
+    margin-top: 20px;
+    padding: 30px 30px 20px;
+  }
+}
+
+@media (max-width: 768px) {
+  .services {
+    grid-template-columns: 1fr;  /* For 1 column -> no need to 'repeat' columns. */
+  }
+
+  .services .service {
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+  }
+
+  .contact-form .input50,
+  .contact-form .input100 {
+    width: 100%;            /* so that all fields occupy full width.*/
+    margin: 0;
+  }
+
+}
